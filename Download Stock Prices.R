@@ -9,7 +9,7 @@ gc()
 
 setwd("C:/Users/maran/Documents/Data Projects/Fund Investment Tool")
 
-wb <- loadWorkbook(file = "Investment Analysis Tool.xlsx")
+wb <- loadWorkbook(file = "Vanguard Top Performers.xlsx")
 
 
 funds <- read.csv("funds.csv", stringsAsFactors = F)
@@ -110,7 +110,9 @@ returns_class <- returns_full %>%
   summarize(avg_ytd = mean(ytd_adj),
             avg_6mo = mean(rolling_6_mo),
             funds = n()) %>%
-  arrange(desc(avg_ytd))
+  arrange(-avg_ytd) %>%
+  ungroup() %>%
+  mutate(rank = rank(desc(avg_ytd)))
 
 
 # Table for display with index funds
@@ -145,4 +147,4 @@ removeSheet(wb, sheetName = "class returns")
 newSheet <- createSheet(wb, sheetName="class returns")
 addDataFrame(returns_class, newSheet, row.names = F)
 
-saveWorkbook(wb, "Investment Analysis Tool.xlsx")
+saveWorkbook(wb, "Vanguard Top Performers.xlsx")
