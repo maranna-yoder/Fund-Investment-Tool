@@ -44,92 +44,102 @@ tickers <- funds %>% pull(ticker)
 
 
 
-# year to date & 6 month rolling returns analysis
-# needs to be run regularly
 
-six_months <- today() - months(6)
-year_start <- as.Date("2020-01-01")
+### year to date, 3 month rolling, and 1 month rolling returns analysis
+### needs to be run regularly
 
-earliest_date <- min(six_months, year_start)
+
+# date info
+three_months <- today() - months(3)
+one_month    <- today() - months(1)
+year_start  <- as.Date("2020-01-01")
+
+earliest_date <- min(three_months, year_start)
 today <- today()
 
+
+# pull stock data
 stocks <- tq_get(tickers,
                  from = earliest_date,
                  to = today,
                  get = "stock.prices")
 
-# Calculate return year to date
-ytd_return <- stocks %>%
-  group_by(symbol) %>%
-  filter(date >= year_start) %>%
-  filter(!is.na(close)) %>%
-  tq_transmute(select = close,
-               mutate_fun = periodReturn,
-               period = "yearly",
-               type = "arithmetic") %>%
-  mutate(type = "ytd") %>%
-  rename(date_pulled = date,
-         return = yearly.returns,
-         ticker = symbol) %>%
-  select(ticker, date_pulled, return, type)
 
-# Calculate rolling 6 month return
-sixmo_return <- stocks %>%
-  group_by(symbol) %>%
-  filter(date >= six_months) %>%
-  filter(!is.na(close)) %>%
-  tq_transmute(select = close,
-               mutate_fun = periodReturn,
-               period = "yearly",
-               type = "arithmetic") %>%
-  mutate(type = "rolling_6_mo") %>%
-  rename(date_pulled = date,
-         return = yearly.returns,
-         ticker = symbol) %>%
-  select(ticker, date_pulled, return, type)
+# Function to calculate return from today to date
+FundReturnFunction <- function(stock_data, start_date, type_col){
+  
+  period_return <- stock_data %>%
+    group_by(symbol) %>%
+    filter(date >= start_date) %>%
+    filter(!is.na(close)) %>%
+    tq_transmute(select = close,
+                 mutate_fun = periodReturn,
+                 period = "yearly",
+                 type = "arithmetic") %>%
+    mutate(type = type_col) %>%
+    rename(date_pulled = date,
+           return = yearly.returns,
+           ticker = symbol) %>%
+    select(ticker, date_pulled, return, type)
 
-# compile year to date and 6 month returns, reshape wide
-returns <- bind_rows(ytd_return, sixmo_return) %>%
+  return(period_return)
+  
+}
+
+ytd_return      <- FundReturnFunction(stocks, year_start, "ytd")
+rolling3_return <- FundReturnFunction(stocks, three_months, "rolling_3_mo")
+rolling1_return <- FundReturnFunction(stocks, one_month, "rolling_1_mo")
+
+
+# compile calculated returns, reshape wide
+returns <- bind_rows(ytd_return, rolling3_return, rolling1_return) %>%
   pivot_wider(names_from = type, values_from = return) %>%
   ungroup() 
 
+
 # adjust ytd and 6 month returns by expense ratio and merge with fund details
-# 'adjusted' refers to return minus expense ratio
+# 'adjusted' refers to return minus prorated expense ratio
+# the true expense ratio calculation involves converting to an annualized basis
+# rather than pro-rating, but I omit it here as an approximation.
+
 percent_year <- as.numeric(today - year_start)/365
 
 returns_full <- full_join(funds, returns, by = "ticker") %>% 
   mutate(ytd_adj       = ytd - expense_ratio * percent_year,
-         rolling_adj   = rolling_6_mo - expense_ratio / 2,
+         rolling3_adj   = rolling_3_mo - expense_ratio / 4,
+         rolling1_adj   = rolling_1_mo - expense_ratio / 12,
          rank_ytd      = rank(desc(ytd_adj)),
-         rank_rolling = rank(desc(rolling_adj))) %>%
-  arrange(rank_ytd)
+         rank_rolling3 = rank(desc(rolling3_adj)),
+         rank_rolling1 = rank(desc(rolling1_adj))) %>%
+  arrange(rank_rolling3)
 
 # Calculate return summary by fund attributes
 returns_class <- returns_full %>%
   group_by(asset_class, size, type, location) %>%
   summarize(avg_ytd = mean(ytd_adj),
-            avg_6mo = mean(rolling_6_mo),
+            avg_3mo = mean(rolling_3_mo),
+            avg_1mo = mean(rolling_1_mo),
             funds = n()) %>%
-  arrange(-avg_ytd) %>%
+  arrange(-avg_1mo) %>%
   ungroup() %>%
-  mutate(rank = rank(desc(avg_ytd)))
+  mutate(rank1mo = rank(desc(avg_1mo)))
 
 
 # Table for display with index funds
 index_tickers <- c("VFIAX", "VTSAX", "VBTLX")
 
 index_rows <- returns_full %>% 
-  select(-ytd, -rolling_6_mo, -date_pulled) %>%
+  select(-ytd, -rolling_3_mo, -rolling_1_mo, -date_pulled) %>%
   filter(ticker %in% index_tickers) %>%
   mutate(row_type = "Benchmark Funds")
 
 returns_table <- returns_full %>%
-  filter(rank_ytd <= 10  | ticker %in% index_tickers) %>%
-  select(-ytd, -rolling_6_mo, -date_pulled) %>%
+  filter(rank_rolling3 <= 10  | ticker %in% index_tickers) %>%
+  select(-ytd, -rolling_3_mo, -rolling_1_mo, -date_pulled) %>%
   mutate(row_type = "Top Performing Funds") %>%
   bind_rows(index_rows) %>%
   gt(groupname_col = "row_type") %>%
-  fmt_percent(columns = vars(ytd_adj, rolling_adj), decimals = 1) %>%
+  fmt_percent(columns = vars(ytd_adj, rolling3_adj, rolling1_adj), decimals = 1) %>%
   fmt_percent(columns = vars(expense_ratio), decimals = 2) 
 
 returns_table
