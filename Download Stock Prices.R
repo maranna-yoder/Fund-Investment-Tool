@@ -6,17 +6,17 @@ library(tidyr)
 rm(list = ls())
 gc()
 
-setwd("C:/Users/maran/Documents/Data Stuff/Fund Investment Tool")
+setwd("C:/Users/maran/Documents/Data Projects/Fund Investment Tool")
 
 wb <- loadWorkbook(file = "Investment Analysis Tool.xlsx")
 
 
-funds <- read.xlsx("Investment Analysis Tool.xlsx", sheetName = "funds")
+funds <- read.csv("funds.csv", stringsAsFactors = F)
 tickers <- funds %>% pull(ticker)
 
 
 
-# # Historical Prices
+# # Historical Prices - only needs to be run once
 # stocks_historical <- tq_get(tickers,
 #                             from = "2010-01-01",
 #                             to = "2019-12-31",
@@ -43,7 +43,8 @@ tickers <- funds %>% pull(ticker)
 
 
 
-# year to date & 6 month rolling
+# year to date & 6 month rolling returns analysis
+# needs to be run regularly
 
 six_months <- today() - months(6)
 year_start <- as.Date("2020-01-01")
@@ -56,6 +57,7 @@ stocks <- tq_get(tickers,
                  to = today,
                  get = "stock.prices")
 
+# Calculate return year to date
 ytd_return <- stocks %>%
   group_by(symbol) %>%
   filter(date >= year_start) %>%
@@ -70,7 +72,7 @@ ytd_return <- stocks %>%
          ticker = symbol) %>%
   select(ticker, date_pulled, return, type)
 
-
+# Calculate rolling 6 month return
 sixmo_return <- stocks %>%
   group_by(symbol) %>%
   filter(date >= six_months) %>%
@@ -85,18 +87,19 @@ sixmo_return <- stocks %>%
          ticker = symbol) %>%
   select(ticker, date_pulled, return, type)
 
+# compile year to date and 6 month returns, reshape wide
 returns <- bind_rows(ytd_return, sixmo_return) %>%
   pivot_wider(names_from = type, values_from = return) %>%
-  ungroup() %>%
-  mutate(rank_ytd = rank(desc(ytd)),
-         rank_6mo = rank(desc(rolling_6_mo))) %>%
-  arrange(rank_ytd)
+  ungroup() 
 
+# adjust ytd and 6 month returns by expense ratio and merge with fund details
 percent_year <- as.numeric(today - year_start)/365
 
 returns_full <- full_join(funds, returns, by = "ticker") %>% 
-  mutate(ytd_adj = ytd - expense_ratio * percent_year) %>%
-  mutate(rank_ytd = rank(desc(ytd_adj))) %>%
+  mutate(ytd_adj       = ytd - expense_ratio * percent_year,
+         rolling_adj   = rolling_6_mo - expense_ratio / 2,
+         rank_ytd      = rank(desc(ytd_adj)),
+         rank_rollling = rank(desc(rolling_adj))) %>%
   arrange(rank_ytd)
 
 returns_class <- returns_full %>%
