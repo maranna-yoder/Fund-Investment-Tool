@@ -2,6 +2,7 @@ library(tidyquant)
 library(dplyr)
 library(xlsx)
 library(tidyr)
+library(gt)
 
 rm(list = ls())
 gc()
@@ -93,15 +94,17 @@ returns <- bind_rows(ytd_return, sixmo_return) %>%
   ungroup() 
 
 # adjust ytd and 6 month returns by expense ratio and merge with fund details
+# 'adjusted' refers to return minus expense ratio
 percent_year <- as.numeric(today - year_start)/365
 
 returns_full <- full_join(funds, returns, by = "ticker") %>% 
   mutate(ytd_adj       = ytd - expense_ratio * percent_year,
          rolling_adj   = rolling_6_mo - expense_ratio / 2,
          rank_ytd      = rank(desc(ytd_adj)),
-         rank_rollling = rank(desc(rolling_adj))) %>%
+         rank_rolling = rank(desc(rolling_adj))) %>%
   arrange(rank_ytd)
 
+# Calculate return summary by fund attributes
 returns_class <- returns_full %>%
   group_by(asset_class, size, type, location) %>%
   summarize(avg_ytd = mean(ytd_adj),
@@ -110,10 +113,36 @@ returns_class <- returns_full %>%
   arrange(desc(avg_ytd))
 
 
+# Table for display with index funds
+index_tickers <- c("VFIAX", "VTSAX", "VBTLX")
 
-returns <- data.frame(returns)
+index_rows <- returns_full %>% 
+  select(-ytd, -rolling_6_mo, -date_pulled) %>%
+  filter(ticker %in% index_tickers) %>%
+  mutate(row_type = "Benchmark Funds")
+
+returns_table <- returns_full %>%
+  filter(rank_ytd <= 10  | ticker %in% index_tickers) %>%
+  select(-ytd, -rolling_6_mo, -date_pulled) %>%
+  mutate(row_type = "Top Performing Funds") %>%
+  bind_rows(index_rows) %>%
+  gt(groupname_col = "row_type") %>%
+  fmt_percent(columns = vars(ytd_adj, rolling_adj), decimals = 1) %>%
+  fmt_percent(columns = vars(expense_ratio), decimals = 2) 
+
+returns_table
+
+
+
+# Add back into Excel file
+returns_full <- data.frame(returns_full)
 removeSheet(wb, sheetName = "ytd returns")
 newSheet <- createSheet(wb, sheetName="ytd returns")
-addDataFrame(returns, newSheet, row.names = F)
+addDataFrame(returns_full, newSheet, row.names = F)
+
+returns_class <- data.frame(returns_class)
+removeSheet(wb, sheetName = "class returns")
+newSheet <- createSheet(wb, sheetName="class returns")
+addDataFrame(returns_class, newSheet, row.names = F)
 
 saveWorkbook(wb, "Investment Analysis Tool.xlsx")

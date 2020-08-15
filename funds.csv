@@ -1,108 +1,108 @@
-"ticker","title","asset_class","size","type","location","expense_ratio"
-"VFIAX","500 Index Admiral Shares","Stocks","Large Cap","Blend","US",4e-04
-"VDEQX","Diversified Equity","Stocks","Large Cap","Blend","US",0.0035
-"VDADX","Dividend Appreciation Index Admiral Shares","Stocks","Large Cap","Blend","US",8e-04
-"VDIGX","Dividend Growth","Stocks","Large Cap","Blend","US",0.0027
-"VEIPX","Equity Income","Stocks","Large Cap","Value","US",0.0027
-"VFTAX","FTSE Social Index Admiral Shares","Stocks","Large Cap","Growth","US",0.0014
-"VQNPX","Growth and Income","Stocks","Large Cap","Blend","US",0.0033
-"VIGAX","Growth Index Admiral Shares","Stocks","Large Cap","Growth","US",5e-04
-"VHYAX","High Dividend Yield Admiral Index","Stocks","Large Cap","Value","US",8e-04
-"VLCAX","Large-Cap Index Admiral Shares","Stocks","Large Cap","Blend","US",5e-04
-"VTCLX","Tax-Managed Capital Appreciation Admiral Shares","Stocks","Large Cap","Blend","US",9e-04
-"VTSAX","Total Stock Market Index Admiral Shares","Stocks","Large Cap","Blend","US",4e-04
-"VWUSX","US Growth","Stocks","Large Cap","Growth","US",0.0039
-"VVIAX","Value Index Admiral Shares","Stocks","Large Cap","Value","US",5e-04
-"VWNDX","Windsor","Stocks","Large Cap","Value","US",0.003
-"VWNFX","Windsor II","Stocks","Large Cap","Value","US",0.0034
-"VEXAX","Extended Market Index Admiral Shares","Stocks","Mid Cap","Blend","US",6e-04
-"VMGRX","Mid-Cap Growth","Stocks","Mid Cap","Growth","US",0.0036
-"VMGMX","Mid-Cap Growth Index Admiral Shares","Stocks","Mid Cap","Growth","US",7e-04
-"VIMAX","Mid-Cap Index Admiral Shares","Stocks","Mid Cap","Blend","US",5e-04
-"VMVAX","Mid-Cap Value Index Admiral Shares","Stocks","Mid Cap","Value","US",7e-04
-"VASVX","Selected Value","Stocks","Mid Cap","Value","US",0.0033
-"VSEQX","Strategic Equity","Stocks","Mid Cap","Blend","US",0.0017
-"VEXPX","Explorer","Stocks","Small Cap","Growth","US",0.0045
-"VEVFX","Explorer Value","Stocks","Small Cap","Value","US",0.0055
-"VSGAX","Small-Cap Growth Index Admiral Shares","Stocks","Small Cap","Growth","US",7e-04
-"VSMAX","Small-Cap Index Admiral Shares","Stocks","Small Cap","Blend","US",5e-04
-"VSIAX","Small-Cap Value Index Admiral Shares","Stocks","Small Cap","Value","US",7e-04
-"VSTCX","Strategic Small-Cap Equity","Stocks","Small Cap","Blend","US",0.0026
-"VTMSX","Tax-Managed Small-Cap Admiral Shares","Stocks","Small Cap","Blend","US",9e-04
-"VFIIX","GNMA","Bonds","Inter Term","Government","US",0.0021
-"VIPSX","Inflation Protected Securities","Bonds","Inter Term","Government","US",0.002
-"VBILX","Intermediate-Term Bond Index Admiral Shares","Bonds","Inter Term","Investment","US",7e-04
-"VFITX","Intermediate-Term Treasury","Bonds","Inter Term","Government","US",0.002
-"VSIGX","Intermediate-Term Treasury Index Admiral Shares","Bonds","Inter Term","Government","US",7e-04
-"VBLAX","Long Term Bond Index Admiral Shares","Bonds","Long Term","Investment","US",7e-04
-"VUSTX","Long Term Treasury","Bonds","Long Term","Government","US",0.002
-"VLGSX","Long Term Treasury Index Admiral Shares","Bonds","Long Term","Government","US",7e-04
-"VMBSX","Mortgage Backed Securities Index Admiral Shares","Bonds","Inter Term","Government","US",7e-04
-"VBIRX","Short Term Bond Index Admiral Shares","Bonds","Short Term","Investment","US",7e-04
-"VSGBX","Short Term Federal","Bonds","Short Term","Government","US",0.002
-"VTAPX","Short Term Inflation Protected Securities Index Admiral Shares","Bonds","Short Term","Government","US",6e-04
-"VFISX","Short Term Treasury","Bonds","Short Term","Government","US",0.002
-"VSBSX","Short Term Treasury Index Admiral Shares","Bonds","Short Term","Government","US",7e-04
-"VBTLX","Total Bond Market Index Admiral Shares","Bonds","Inter Term","Investment","US",5e-04
-"VCORX","Core Bond","Bonds","Inter Term","Investment","US",0.0025
-"VICSX","Intermediate Term Corporate Bond Index Admiral Shares","Bonds","Inter Term","Investment","US",7e-04
-"VFICX","Intermediate Term Investment Grade","Bonds","Inter Term","Investment","US",0.002
-"VLTCX","Long Term Corporate Bond Index Admiral Shares","Bonds","Long Term","Investment","US",7e-04
-"VWESX","Long Term Investment Grade","Bonds","Long Term","Investment","US",0.0022
-"VSCSX","Short Term Corporate Bond Index Admiral Shares","Bonds","Short Term","Investment","US",7e-04
-"VFSTX","Short Term Investment Grade","Bonds","Short Term","Investment","US",0.002
-"VUBFX","Ultra Short Term Bond","Bonds","Short Term","Investment","US",0.002
-"VWEHX","High-Yield Corporate","Bonds","Inter Term","Low Quality","US",0.0023
-"VCAIX","California Intermediate Term Tax Exempt","Bonds","Inter Term","State Muni","US",0.0017
-"VCITX","California Long Term Tax Exempt","Bonds","Long Term","State Muni","US",0.0017
-"VWAHX","High Yield Tax Exempt","Bonds","Long Term","National Muni","US",0.0017
-"VWITX","Intermediate Term Tax Exempt","Bonds","Inter Term","National Muni","US",0.0017
-"VMLTX","Limited Term Tax Exempt","Bonds","Short Term","National Muni","US",0.0017
-"VWLTX","Long Term Tax Exempt","Bonds","Long Term","National Muni","US",0.0017
-"VMATX","Massachusetts Tax Exempt","Bonds","Long Term","State Muni","US",0.0013
-"VNJTX","New Jersey Long Term Tax Exempt","Bonds","Long Term","State Muni","US",0.0017
-"VNYTX","New York Long Term Tax Exempt","Bonds","Long Term","State Muni","US",0.0017
-"VOHIX","Ohio Long Term Tax Exempt","Bonds","Long Term","State Muni","US",0.0013
-"VPAIX","Pennsylvania Long Term Tax Exempt","Bonds","Long Term","State Muni","US",0.0017
-"VWSTX","Short Term Tax Exempt","Bonds","Short Term","National Muni","US",0.0017
-"VTEAX","Tax Exempt Bond Index Admiral Shares","Bonds","Inter Term","National Muni","US",9e-04
-"VSCGX","LifeStrategy Conservative Growth","Balanced",NA,NA,"US",0.0012
-"VASGX","LifeStrategy Growth","Balanced",NA,NA,"US",0.0014
-"VASIX","LifeStrategy Income","Balanced",NA,NA,"US",0.0011
-"VSMGX","LifeStrategy Moderate Growth","Balanced",NA,NA,"US",0.0013
-"VBIAX","Balanced Index Admiral Shares","Balanced",NA,NA,"US",7e-04
-"VPGDX","Managed Allocation","Balanced",NA,NA,"US",0.003
-"VGSTX","STAR","Balanced",NA,NA,"US",0.0031
-"VTMFX","Tax Managed Balanced Admiral Shares","Balanced",NA,NA,"US",9e-04
-"VWINX","Wellesley Income","Balanced",NA,NA,"US",0.0023
-"VWELX","Wellington","Balanced",NA,NA,"US",0.0025
-"VGWIX","Global Wellesley Income","Balanced",NA,NA,"International",0.0042
-"VGWLX","Global Wellington","Balanced",NA,NA,"International",0.0046
-"VFFVX","Target Retirement 2055","Balanced",NA,NA,"US",0.0015
-"VGCIX","Global Credit Bond","Bonds",NA,NA,"International",0.0035
-"VTABX","Total International Bond Index Admiral Shares","Bonds",NA,NA,"International",0.0011
-"VEMBX","Emerging Markets Bond","Bonds",NA,NA,"International",0.006
-"VGAVX","Emerging Markets Government Bond Index Admiral Shares","Bonds",NA,NA,"International",0.0025
-"VGPMX","Global Capital Cycles","Stocks",NA,NA,"International",0.0038
-"VHGEX","Global Equity","Stocks",NA,NA,"International",0.0048
-"VEIGX","Global ESG Select Stock","Stocks",NA,NA,"International",0.0058
-"VTWAX","Total World Stock Index Admiral Shares","Stocks",NA,NA,"International",0.001
-"VTMGX","Developed Markets Index Admiral Shares","Stocks",NA,NA,"International",7e-04
-"VEUSX","European Stock Index Admiral Shares","Stocks",NA,NA,"International",0.001
-"VFWAX","FTSE All-World ex-US Index Admiral Shares","Stocks",NA,NA,"International",0.0011
-"VFSAX","FTSE All-World ex-US Small Cap Index Admiral Shares","Stocks",NA,NA,"International",0.0016
-"VGRLX","Global ex-US Real Estate Index Admiral Shares","Stocks",NA,NA,"International",0.0012
-"VWICX","International Core Stock","Stocks",NA,NA,"International",0.0045
-"VIAAX","International Dividend Appreciation Index Admiral Shares","Stocks",NA,NA,"International",0.002
-"VINEX","International Explorer","Stocks",NA,NA,"International",0.0039
-"VWIGX","International Growth","Stocks",NA,NA,"International",0.0043
-"VIHAX","International High Dividend Yield Index Admiral Shares","Stocks",NA,NA,"International",0.0027
-"VTRIX","International Value","Stocks",NA,NA,"International",0.0037
-"VPADX","Pacific Stock Index Admiral Shares","Stocks",NA,NA,"International",0.001
-"VTIAX","Total International Stock Index Admiral Shares","Stocks",NA,NA,"International",0.0011
-"VMMSX","Emerging Markets Select Stock","Stocks",NA,NA,"International",0.0093
-"VEMAX","Emerging Markets Stock Index Admiral Shares","Stocks",NA,NA,"International",0.0014
-"VMVFX","Global Minimum Volatility","Stocks",NA,NA,"International",0.0021
-"VGENX","Energy","Stocks",NA,"Sector","US",0.0032
-"VGHCX","Health Care","Stocks",NA,"Sector","US",0.0032
-"VGSLX","Real Estate Index Admiral Shares","Stocks",NA,"Sector","US",0.0012
+ticker,title,asset_class,size,type,location,expense_ratio
+VFIAX,500 Index Admiral Shares,Stocks,Large Cap,Blend,US,4.00E-04
+VDEQX,Diversified Equity,Stocks,Large Cap,Blend,US,0.0035
+VDADX,Dividend Appreciation Index Admiral Shares,Stocks,Large Cap,Blend,US,8.00E-04
+VDIGX,Dividend Growth,Stocks,Large Cap,Blend,US,0.0027
+VEIPX,Equity Income,Stocks,Large Cap,Value,US,0.0027
+VFTAX,FTSE Social Index Admiral Shares,Stocks,Large Cap,Growth,US,0.0014
+VQNPX,Growth and Income,Stocks,Large Cap,Blend,US,0.0033
+VIGAX,Growth Index Admiral Shares,Stocks,Large Cap,Growth,US,5.00E-04
+VHYAX,High Dividend Yield Admiral Index,Stocks,Large Cap,Value,US,8.00E-04
+VLCAX,Large-Cap Index Admiral Shares,Stocks,Large Cap,Blend,US,5.00E-04
+VTCLX,Tax-Managed Capital Appreciation Admiral Shares,Stocks,Large Cap,Blend,US,9.00E-04
+VTSAX,Total Stock Market Index Admiral Shares,Stocks,Large Cap,Blend,US,4.00E-04
+VWUSX,US Growth,Stocks,Large Cap,Growth,US,0.0039
+VVIAX,Value Index Admiral Shares,Stocks,Large Cap,Value,US,5.00E-04
+VWNDX,Windsor,Stocks,Large Cap,Value,US,0.003
+VWNFX,Windsor II,Stocks,Large Cap,Value,US,0.0034
+VEXAX,Extended Market Index Admiral Shares,Stocks,Mid Cap,Blend,US,6.00E-04
+VMGRX,Mid-Cap Growth,Stocks,Mid Cap,Growth,US,0.0036
+VMGMX,Mid-Cap Growth Index Admiral Shares,Stocks,Mid Cap,Growth,US,7.00E-04
+VIMAX,Mid-Cap Index Admiral Shares,Stocks,Mid Cap,Blend,US,5.00E-04
+VMVAX,Mid-Cap Value Index Admiral Shares,Stocks,Mid Cap,Value,US,7.00E-04
+VASVX,Selected Value,Stocks,Mid Cap,Value,US,0.0033
+VSEQX,Strategic Equity,Stocks,Mid Cap,Blend,US,0.0017
+VEXPX,Explorer,Stocks,Small Cap,Growth,US,0.0045
+VEVFX,Explorer Value,Stocks,Small Cap,Value,US,0.0055
+VSGAX,Small-Cap Growth Index Admiral Shares,Stocks,Small Cap,Growth,US,7.00E-04
+VSMAX,Small-Cap Index Admiral Shares,Stocks,Small Cap,Blend,US,5.00E-04
+VSIAX,Small-Cap Value Index Admiral Shares,Stocks,Small Cap,Value,US,7.00E-04
+VSTCX,Strategic Small-Cap Equity,Stocks,Small Cap,Blend,US,0.0026
+VTMSX,Tax-Managed Small-Cap Admiral Shares,Stocks,Small Cap,Blend,US,9.00E-04
+VFIIX,GNMA,Bonds,Inter Term,Government,US,0.0021
+VIPSX,Inflation Protected Securities,Bonds,Inter Term,Government,US,0.002
+VBILX,Intermediate-Term Bond Index Admiral Shares,Bonds,Inter Term,Investment,US,7.00E-04
+VFITX,Intermediate-Term Treasury,Bonds,Inter Term,Government,US,0.002
+VSIGX,Intermediate-Term Treasury Index Admiral Shares,Bonds,Inter Term,Government,US,7.00E-04
+VBLAX,Long Term Bond Index Admiral Shares,Bonds,Long Term,Investment,US,7.00E-04
+VUSTX,Long Term Treasury,Bonds,Long Term,Government,US,0.002
+VLGSX,Long Term Treasury Index Admiral Shares,Bonds,Long Term,Government,US,7.00E-04
+VMBSX,Mortgage Backed Securities Index Admiral Shares,Bonds,Inter Term,Government,US,7.00E-04
+VBIRX,Short Term Bond Index Admiral Shares,Bonds,Short Term,Investment,US,7.00E-04
+VSGBX,Short Term Federal,Bonds,Short Term,Government,US,0.002
+VTAPX,Short Term Inflation Protected Securities Index Admiral Shares,Bonds,Short Term,Government,US,6.00E-04
+VFISX,Short Term Treasury,Bonds,Short Term,Government,US,0.002
+VSBSX,Short Term Treasury Index Admiral Shares,Bonds,Short Term,Government,US,7.00E-04
+VBTLX,Total Bond Market Index Admiral Shares,Bonds,Inter Term,Investment,US,5.00E-04
+VCORX,Core Bond,Bonds,Inter Term,Investment,US,0.0025
+VICSX,Intermediate Term Corporate Bond Index Admiral Shares,Bonds,Inter Term,Investment,US,7.00E-04
+VFICX,Intermediate Term Investment Grade,Bonds,Inter Term,Investment,US,0.002
+VLTCX,Long Term Corporate Bond Index Admiral Shares,Bonds,Long Term,Investment,US,7.00E-04
+VWESX,Long Term Investment Grade,Bonds,Long Term,Investment,US,0.0022
+VSCSX,Short Term Corporate Bond Index Admiral Shares,Bonds,Short Term,Investment,US,7.00E-04
+VFSTX,Short Term Investment Grade,Bonds,Short Term,Investment,US,0.002
+VUBFX,Ultra Short Term Bond,Bonds,Short Term,Investment,US,0.002
+VWEHX,High-Yield Corporate,Bonds,Inter Term,Low Quality,US,0.0023
+VCAIX,California Intermediate Term Tax Exempt,Bonds,Inter Term,State Muni,US,0.0017
+VCITX,California Long Term Tax Exempt,Bonds,Long Term,State Muni,US,0.0017
+VWAHX,High Yield Tax Exempt,Bonds,Long Term,National Muni,US,0.0017
+VWITX,Intermediate Term Tax Exempt,Bonds,Inter Term,National Muni,US,0.0017
+VMLTX,Limited Term Tax Exempt,Bonds,Short Term,National Muni,US,0.0017
+VWLTX,Long Term Tax Exempt,Bonds,Long Term,National Muni,US,0.0017
+VMATX,Massachusetts Tax Exempt,Bonds,Long Term,State Muni,US,0.0013
+VNJTX,New Jersey Long Term Tax Exempt,Bonds,Long Term,State Muni,US,0.0017
+VNYTX,New York Long Term Tax Exempt,Bonds,Long Term,State Muni,US,0.0017
+VOHIX,Ohio Long Term Tax Exempt,Bonds,Long Term,State Muni,US,0.0013
+VPAIX,Pennsylvania Long Term Tax Exempt,Bonds,Long Term,State Muni,US,0.0017
+VWSTX,Short Term Tax Exempt,Bonds,Short Term,National Muni,US,0.0017
+VTEAX,Tax Exempt Bond Index Admiral Shares,Bonds,Inter Term,National Muni,US,9.00E-04
+VSCGX,LifeStrategy Conservative Growth,Balanced,NA,NA,US,0.0012
+VASGX,LifeStrategy Growth,Balanced,NA,NA,US,0.0014
+VASIX,LifeStrategy Income,Balanced,NA,NA,US,0.0011
+VSMGX,LifeStrategy Moderate Growth,Balanced,NA,NA,US,0.0013
+VBIAX,Balanced Index Admiral Shares,Balanced,NA,NA,US,7.00E-04
+VPGDX,Managed Allocation,Balanced,NA,NA,US,0.003
+VGSTX,STAR,Balanced,NA,NA,US,0.0031
+VTMFX,Tax Managed Balanced Admiral Shares,Balanced,NA,NA,US,9.00E-04
+VWINX,Wellesley Income,Balanced,NA,NA,US,0.0023
+VWELX,Wellington,Balanced,NA,NA,US,0.0025
+VGWIX,Global Wellesley Income,Balanced,NA,NA,International,0.0042
+VGWLX,Global Wellington,Balanced,NA,NA,International,0.0046
+VFFVX,Target Retirement 2055,Balanced,NA,NA,US,0.0015
+VGCIX,Global Credit Bond,Bonds,NA,NA,International,0.0035
+VTABX,Total International Bond Index Admiral Shares,Bonds,NA,NA,International,0.0011
+VEMBX,Emerging Markets Bond,Bonds,NA,NA,International,0.006
+VGAVX,Emerging Markets Government Bond Index Admiral Shares,Bonds,NA,NA,International,0.0025
+VGPMX,Global Capital Cycles,Stocks,NA,NA,International,0.0038
+VHGEX,Global Equity,Stocks,NA,NA,International,0.0048
+VEIGX,Global ESG Select Stock,Stocks,NA,NA,International,0.0058
+VTWAX,Total World Stock Index Admiral Shares,Stocks,NA,NA,International,0.001
+VTMGX,Developed Markets Index Admiral Shares,Stocks,NA,NA,International,7.00E-04
+VEUSX,European Stock Index Admiral Shares,Stocks,NA,NA,International,0.001
+VFWAX,FTSE All-World ex-US Index Admiral Shares,Stocks,NA,NA,International,0.0011
+VFSAX,FTSE All-World ex-US Small Cap Index Admiral Shares,Stocks,NA,NA,International,0.0016
+VGRLX,Global ex-US Real Estate Index Admiral Shares,Stocks,NA,NA,International,0.0012
+VWICX,International Core Stock,Stocks,NA,NA,International,0.0045
+VIAAX,International Dividend Appreciation Index Admiral Shares,Stocks,NA,NA,International,0.002
+VINEX,International Explorer,Stocks,NA,NA,International,0.0039
+VWIGX,International Growth,Stocks,NA,Growth,International,0.0043
+VIHAX,International High Dividend Yield Index Admiral Shares,Stocks,NA,NA,International,0.0027
+VTRIX,International Value,Stocks,NA,Value,International,0.0037
+VPADX,Pacific Stock Index Admiral Shares,Stocks,NA,NA,International,0.001
+VTIAX,Total International Stock Index Admiral Shares,Stocks,NA,NA,International,0.0011
+VMMSX,Emerging Markets Select Stock,Stocks,NA,NA,International,0.0093
+VEMAX,Emerging Markets Stock Index Admiral Shares,Stocks,NA,NA,International,0.0014
+VMVFX,Global Minimum Volatility,Stocks,NA,NA,International,0.0021
+VGENX,Energy,Stocks,NA,Sector,US,0.0032
+VGHCX,Health Care,Stocks,NA,Sector,US,0.0032
+VGSLX,Real Estate Index Admiral Shares,Stocks,NA,Sector,US,0.0012
