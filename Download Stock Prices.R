@@ -9,10 +9,10 @@ gc()
 
 setwd("C:/Users/maran/Documents/Data Projects/Fund Investment Tool")
 
-wb <- loadWorkbook(file = "Vanguard Top Performers.xlsx")
+wb <- loadWorkbook(file = "./public/Vanguard Top Performers.xlsx")
 
 
-funds <- read.csv("funds.csv", stringsAsFactors = F)
+funds <- read.csv("./public/funds.csv", stringsAsFactors = F)
 tickers <- funds %>% pull(ticker)
 
 
@@ -157,4 +157,4 @@ removeSheet(wb, sheetName = "class returns")
 newSheet <- createSheet(wb, sheetName="class returns")
 addDataFrame(returns_class, newSheet, row.names = F)
 
-saveWorkbook(wb, "Vanguard Top Performers.xlsx")
+saveWorkbook(wb, "./public/Vanguard Top Performers.xlsx")
