@@ -52,6 +52,7 @@ tickers <- funds %>% pull(ticker)
 # date info
 three_months <- today() - months(3)
 one_month    <- today() - months(1)
+two_weeks    <- today() - days(14)
 year_start  <- as.Date("2020-01-01")
 
 earliest_date <- min(three_months, year_start)
@@ -86,18 +87,19 @@ FundReturnFunction <- function(stock_data, start_date, type_col){
   
 }
 
-ytd_return      <- FundReturnFunction(stocks, year_start, "ytd")
-rolling3_return <- FundReturnFunction(stocks, three_months, "rolling_3_mo")
-rolling1_return <- FundReturnFunction(stocks, one_month, "rolling_1_mo")
+ytd_return        <- FundReturnFunction(stocks, year_start, "ytd")
+rolling3_return   <- FundReturnFunction(stocks, three_months, "rolling_3_mo")
+rolling1_return   <- FundReturnFunction(stocks, one_month, "rolling_1_mo")
+rolling2wk_return <- FundReturnFunction(stocks, two_weeks, "rolling_2_wk")
 
 
 # compile calculated returns, reshape wide
-returns <- bind_rows(ytd_return, rolling3_return, rolling1_return) %>%
+returns <- bind_rows(ytd_return, rolling3_return, rolling1_return, rolling2wk_return) %>%
   pivot_wider(names_from = type, values_from = return) %>%
   ungroup() 
 
 
-# adjust ytd and 6 month returns by expense ratio and merge with fund details
+# adjust ytd and rolling returns by expense ratio and merge with fund details
 # 'adjusted' refers to return minus prorated expense ratio
 # the true expense ratio calculation involves converting to an annualized basis
 # rather than pro-rating, but I omit it here as an approximation.
@@ -108,21 +110,24 @@ returns_full <- full_join(funds, returns, by = "ticker") %>%
   mutate(ytd_adj       = ytd - expense_ratio * percent_year,
          rolling3_adj   = rolling_3_mo - expense_ratio / 4,
          rolling1_adj   = rolling_1_mo - expense_ratio / 12,
-         rank_ytd      = rank(desc(ytd_adj)),
-         rank_rolling3 = rank(desc(rolling3_adj)),
-         rank_rolling1 = rank(desc(rolling1_adj))) %>%
+         rolling2wk_adj = rolling_2_wk - expense_ratio / 26,
+         rank_ytd      = rank(desc(ytd_adj), ties.method = "first"),
+         rank_rolling3 = rank(desc(rolling3_adj), ties.method = "first"),
+         rank_rolling1 = rank(desc(rolling1_adj), ties.method = "first"),
+         rank_rolling2wk = rank(desc(rolling2wk_adj), ties.method = "first")) %>%
   arrange(rank_rolling3)
 
 # Calculate return summary by fund attributes
 returns_class <- returns_full %>%
   group_by(asset_class, size, type, location) %>%
   summarize(avg_ytd = mean(ytd_adj),
-            avg_3mo = mean(rolling_3_mo),
-            avg_1mo = mean(rolling_1_mo),
+            avg_3mo = mean(rolling3_adj),
+            avg_1mo = mean(rolling1_adj),
+            avg_2wk = mean(rolling2wk_adj),
             funds = n()) %>%
   arrange(-avg_1mo) %>%
   ungroup() %>%
-  mutate(rank1mo = rank(desc(avg_1mo)))
+  mutate(rank1mo = rank(desc(avg_1mo), ties.method = "first"))
 
 
 # Table for display with index funds
